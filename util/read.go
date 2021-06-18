@@ -1,7 +1,6 @@
 package util
 
 import (
-	"bytes"
 	"fmt"
 	"io/ioutil"
 	"os"
@@ -68,13 +67,4 @@ func dirwalk(dir string) ([]string, error) {
 	}
 
 	return paths, nil
-}
-
-func parseContent(raw string) (*hugocontent.MarkdownContent, error) {
-	content, err := hugocontent.ParseMarkdownWithYaml(bytes.NewBufferString(raw))
-	if err != nil {
-		return nil, failure.Wrap(err)
-	}
-
-	return content, nil
 }

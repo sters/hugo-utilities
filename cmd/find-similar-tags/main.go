@@ -112,5 +112,5 @@ func main() {
 
 	sort.Slice(result, func(i, j int) bool { return result[i] < result[j] })
 
-	fmt.Printf(strings.Join(result, "\n"))
+	fmt.Print(strings.Join(result, "\n"))
 }
