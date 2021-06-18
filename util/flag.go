@@ -4,6 +4,7 @@ import (
 	"flag"
 	"fmt"
 	"os"
+	"strings"
 )
 
 type BasicFlag struct {
@@ -17,7 +18,7 @@ func ParseFlag() *BasicFlag {
 	if *dir == "" {
 		fmt.Fprintf(
 			os.Stderr,
-			"required dir argument\n\n",
+			"Required dir argument\n\n",
 		)
 		flag.Usage()
 
@@ -25,6 +26,6 @@ func ParseFlag() *BasicFlag {
 	}
 
 	return &BasicFlag{
-		BaseDir: *dir,
+		BaseDir: strings.TrimSpace(*dir),
 	}
 }
