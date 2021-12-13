@@ -8,8 +8,8 @@ import (
 	"strings"
 
 	"github.com/agnivade/levenshtein"
+	"github.com/sters/hugo-utilities/content"
 	"github.com/sters/hugo-utilities/util"
-	hugocontent "github.com/sters/simple-hugo-content-parse"
 )
 
 type similarTagRelation struct {
@@ -40,7 +40,7 @@ func (s similarTagRelations) appendWithoutDuplecation(r *similarTagRelation) {
 	s[r.Hash()] = r
 }
 
-func getAllTags(contents []*hugocontent.MarkdownContent, field string) []string {
+func getAllTags(contents []*content.MarkdownContent, field string) []string {
 	tags := make([]string, 0, len(contents))
 	check := map[string]struct{}{}
 	for _, c := range contents {
@@ -58,7 +58,9 @@ func getAllTags(contents []*hugocontent.MarkdownContent, field string) []string 
 }
 
 func main() {
-	t := flag.Float64("threshold", 0.7, "")
+	const defaultThreshold = 0.7
+
+	t := flag.Float64("threshold", defaultThreshold, "")
 	ff := flag.String("field", "tags", "")
 	basicFlags := util.ParseFlag()
 	flags := struct {

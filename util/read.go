@@ -8,17 +8,17 @@ import (
 	"strings"
 
 	"github.com/morikuni/failure"
-	hugocontent "github.com/sters/simple-hugo-content-parse"
+	"github.com/sters/hugo-utilities/content"
 )
 
-func ReadAllContents(dir string) ([]*hugocontent.MarkdownContent, error) {
+func ReadAllContents(dir string) ([]*content.MarkdownContent, error) {
 	dirs, err := dirwalk(dir)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Failed: %s", err)
 		os.Exit(1)
 	}
 
-	contents := make([]*hugocontent.MarkdownContent, 0, len(dirs))
+	contents := make([]*content.MarkdownContent, 0, len(dirs))
 	for _, filepath := range dirs {
 		if !strings.HasSuffix(filepath, ".md") || strings.HasSuffix(filepath, "_index.md") {
 			continue
@@ -29,7 +29,7 @@ func ReadAllContents(dir string) ([]*hugocontent.MarkdownContent, error) {
 			return nil, failure.Wrap(err)
 		}
 
-		content, err := hugocontent.ParseMarkdownWithYaml(f)
+		content, err := content.ParseMarkdownWithYaml(f)
 		f.Close()
 		if err != nil {
 			return nil, failure.Wrap(err)
@@ -47,7 +47,7 @@ func dirwalk(dir string) ([]string, error) {
 		return nil, failure.Wrap(err)
 	}
 
-	var paths []string
+	paths := make([]string, 0, len(files))
 	for _, file := range files {
 		if file.IsDir() {
 			childFiles, err := dirwalk(filepath.Join(dir, file.Name()))
