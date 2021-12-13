@@ -1,5 +1,6 @@
 builds:
 - id: publish-reserved-content
+  binary: publish-reserved-content
   main: ./cmd/publish-reserved-content/main.go
   env:
     - CGO_ENABLED=0
@@ -11,6 +12,7 @@ builds:
     - 386
     - amd64
 - id: find-often-tag-with
+  binary: find-often-tag-with
   main: ./cmd/find-often-tag-with/main.go
   env:
     - CGO_ENABLED=0
@@ -22,6 +24,7 @@ builds:
     - 386
     - amd64
 - id: find-similar-tags
+  binary: find-similar-tags
   main: ./cmd/find-similar-tags/main.go
   env:
     - CGO_ENABLED=0
