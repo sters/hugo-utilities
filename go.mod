@@ -4,6 +4,7 @@ go 1.16
 
 require (
 	github.com/agnivade/levenshtein v1.1.1
+	github.com/cavaliergopher/grab/v3 v3.0.1
 	github.com/goccy/go-yaml v1.9.5
 	github.com/golangci/golangci-lint v1.43.0
 	github.com/google/go-cmp v0.5.7

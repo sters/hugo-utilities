@@ -9,7 +9,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/cavaliercoder/grab"
+	"github.com/cavaliergopher/grab/v3"
 	"github.com/morikuni/failure"
 	"github.com/sters/hugo-utilities/content"
 )
