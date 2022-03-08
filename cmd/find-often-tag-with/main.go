@@ -80,22 +80,22 @@ func main() {
 		}
 	}
 
-	sortedtrs := make([]*tagRelation, 0, len(trs))
+	str := make([]*tagRelation, 0, len(trs))
 	for _, tr := range trs {
-		sortedtrs = append(sortedtrs, tr)
+		str = append(str, tr)
 	}
 
-	sort.Slice(sortedtrs, func(i, j int) bool {
-		if sortedtrs[i].count == sortedtrs[j].count {
-			if sortedtrs[i].a == sortedtrs[j].a {
-				return sortedtrs[i].b < sortedtrs[j].b
+	sort.Slice(str, func(i, j int) bool {
+		if str[i].count == str[j].count {
+			if str[i].a == str[j].a {
+				return str[i].b < str[j].b
 			}
-			return sortedtrs[i].a < sortedtrs[j].a
+			return str[i].a < str[j].a
 		}
-		return sortedtrs[i].count > sortedtrs[j].count
+		return str[i].count > str[j].count
 	})
 
-	for _, tr := range sortedtrs {
+	for _, tr := range str {
 		fmt.Printf("(%s, %s) = %d\n", tr.a, tr.b, tr.count)
 	}
 }
