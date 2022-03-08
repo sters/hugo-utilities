@@ -7,14 +7,14 @@ import (
 )
 
 func TestParse(t *testing.T) {
-	assert.Equal(t, []NGramGroup{
+	assert.Equal(t, []GramGroup{
 		{'こ', 'ん'},
 		{'ん', 'に'},
 		{'に', 'ち'},
 		{'ち', 'は'},
 	}, Parse(2, "こんにちは").Groups)
 
-	assert.Equal(t, []NGramGroup{
+	assert.Equal(t, []GramGroup{
 		{'こ', 'ん', 'に'},
 		{'ん', 'に', 'ち'},
 		{'に', 'ち', 'は'},

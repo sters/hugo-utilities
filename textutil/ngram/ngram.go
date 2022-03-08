@@ -1,17 +1,17 @@
 package ngram
 
-type NGramGroup []rune
+type GramGroup []rune
 
-type NGram struct {
+type Gram struct {
 	N      int
-	Groups []NGramGroup
+	Groups []GramGroup
 }
 
-func Parse(n int, raw string) *NGram {
+func Parse(n int, raw string) *Gram {
 	runeraw := []rune(raw)
 	lenRuneraw := len(runeraw)
-	s := make([]NGramGroup, n*n+((lenRuneraw+1)*n))
-	s[0] = make(NGramGroup, n)
+	s := make([]GramGroup, n*n+((lenRuneraw+1)*n))
+	s[0] = make(GramGroup, n)
 
 	x := 0
 	for i := 0; i < lenRuneraw; i++ {
@@ -28,7 +28,7 @@ func Parse(n int, raw string) *NGram {
 		}
 	}
 
-	return &NGram{
+	return &Gram{
 		N:      n,
 		Groups: s[:x+1],
 	}

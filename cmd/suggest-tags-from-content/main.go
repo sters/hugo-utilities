@@ -11,8 +11,10 @@ import (
 	"github.com/sters/hugo-utilities/util"
 )
 
-const defaultThreshold = 10
-const defaultN = 4
+const (
+	defaultThreshold = 10
+	defaultN         = 4
+)
 
 func main() {
 	t := flag.String("target", "", "")
@@ -62,7 +64,7 @@ func main() {
 		for _, group := range ngram.Parse(flags.n, c.Body).Groups {
 			g := ngramGroup(group)
 			if _, ok := gramToTags[g]; !ok {
-				gramToTags[g] = make(tagCount, 0)
+				gramToTags[g] = make(tagCount)
 			}
 
 			for _, contentTag := range contentTags {
