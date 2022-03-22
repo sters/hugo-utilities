@@ -9,7 +9,7 @@ require (
 	github.com/golangci/golangci-lint v1.45.0
 	github.com/google/go-cmp v0.5.7
 	github.com/morikuni/failure v0.14.0
-	github.com/stretchr/testify v1.7.0
+	github.com/stretchr/testify v1.7.1
 )
 
 require (
