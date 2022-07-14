@@ -1,0 +1,5 @@
+{{ if findRE "^/[^/]" .Destination }}
+    <a href="{{ .Destination | safeURL }}" target="_blank">{{ .Text | safeHTML }}</a>
+{{ else }}
+    <a href="{{ .Destination | safeURL }}" target="_blank" rel="noreferrer">{{ .Text | safeHTML }}</a>
+{{ end }}
