@@ -1,0 +1,32 @@
+{{- $addition := "" -}}
+{{- if gt (len .Summary) 200 -}}
+    {{- $addition = "..." -}}
+{{- end -}}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": {{ .Title }},
+    "description": {{ printf "%s%s" (replace (substr (partial "functions/raw" .Summary) 0 200) "\n" " ") $addition }},
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": {{ .Permalink }}
+    },
+    "datePublished": {{ .Date }},
+    "dateModified": {{ .Date }},
+    "image": {{ absURL .Site.Params.logoPath }},
+    "author": {
+        "@type": "Person",
+        "name": {{ .Site.Params.Author }},
+        "image": {{ absURL .Site.Params.logoPath }}
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": {{ .Site.Params.Author }},
+        "logo": {
+            "@type": "ImageObject",
+            "url": {{ absURL .Site.Params.logoPath }}
+        }
+    }
+}
+</script>

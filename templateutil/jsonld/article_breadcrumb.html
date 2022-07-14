@@ -1,0 +1,29 @@
+{{if not (.Scratch.Get "is in list") }}
+{{ $index := 0 }}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        {
+            "@type": "ListItem",
+            "position": {{ $index = add $index 1 }}{{ $index }},
+            "name": {{ .Site.Title }},
+            "item": {{ absURL "/" }}
+        },
+        {
+            "@type": "ListItem",
+            "position": {{ $index = add $index 1 }}{{ $index }},
+            "name": "記事一覧",
+            "item": {{ absURL "/archives/" }}
+        },
+        {
+            "@type": "ListItem",
+            "position": {{ $index = add $index 1 }}{{ $index }},
+            "name": {{ .Page.LinkTitle }},
+            "item": {{ .Page.Permalink }}
+        }
+    ]
+}
+</script>
+{{ end }}
