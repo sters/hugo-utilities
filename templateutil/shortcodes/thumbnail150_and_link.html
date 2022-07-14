@@ -1,0 +1,19 @@
+{{/*
+Usage:
+{{% img src="foo.jpg" alt="this is foo image" %}}
+
+Details:
+- If src param's file exists
+    - Resize that image to 150px
+    - render <a href="{OriginalPermalink}"><img src="ResizedPermalink"></a>
+- Or else, do nothing. (render empty)
+*/}}
+
+{{- $src := .Get "src" -}}
+{{- $original := .Page.Resources.GetMatch $src -}}
+{{- if $original -}}
+    {{- $resized := $original.Resize "150x q50" -}}
+    <a href="{{ $original.Permalink }}">
+        <img width="150" src="{{ $resized.Permalink }}" alt="{{ .Get "alt" }}">
+    </a>
+{{- end -}}

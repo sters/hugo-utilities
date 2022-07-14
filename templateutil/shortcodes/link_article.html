@@ -1,0 +1,29 @@
+{{/*
+Usage:
+{{% link_article "articles/foo/bar/baz" %}}
+
+Details:
+- If "{param}index.md" exists, read that page info, then render [Title](Permalink)
+- Or else if "{param}.md" exists, read that page info, then render [Title](Permalink)
+- Or else, do nothing. (render empty)
+*/}}
+
+{{- $result := "" -}}
+{{- $f := printf "%sindex.md" (.Get 0) -}}
+{{- $pages := where .Site.Pages "File.Path" $f -}}
+{{- if eq (len $pages) 1 -}}
+    {{- $page := index $pages 0 -}}
+    {{- with $page -}}
+        {{- $result = printf "[%s](%s)" .Title .Permalink -}}
+    {{- end -}}
+{{- else -}}
+    {{- $f := printf "%s.md" (.Get 0) -}}
+    {{- $pages := where .Site.Pages "File.Path" $f -}}
+    {{- if eq (len $pages) 1 -}}
+        {{- $page := index $pages 0 -}}
+        {{- with $page -}}
+            {{- $result = printf "[%s](%s)" .Title .Permalink -}}
+        {{- end -}}
+    {{- end -}}
+{{- end -}}
+{{- $result -}}

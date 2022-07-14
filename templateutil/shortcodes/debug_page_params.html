@@ -1,0 +1,11 @@
+{{/*
+Usage:
+{{% debug_page_params %}}
+
+Details:
+- Render <pre><code><xmp>{Params}</xmp></code></pre>
+*/}}
+
+{{ if .Site.IsServer }}
+    <pre><code><xmp>{{ .Params }}</xmp></code></pre>
+{{ end }}
