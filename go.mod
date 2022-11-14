@@ -8,7 +8,7 @@ require (
 	github.com/goccy/go-yaml v1.9.6
 	github.com/golangci/golangci-lint v1.45.2
 	github.com/google/go-cmp v0.5.9
-	github.com/morikuni/failure v1.0.0
+	github.com/morikuni/failure v1.1.2
 	github.com/stretchr/testify v1.8.1
 )
 
